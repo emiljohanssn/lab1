@@ -26,7 +26,6 @@ public class Volvo240 extends Cars{
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 
-    // TODO fix this method according to lab pm
     public void gas(double amount){
         if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0.");
@@ -38,13 +37,12 @@ public class Volvo240 extends Cars{
         incrementSpeed(amount);
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount){
         if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0.");
         } else if (Math.max(getCurrentSpeed() - speedFactor() * amount,0) < 0.0) {
             throw new IllegalArgumentException("Brake makes negative speed!!");
-        } else if (((Math.max(getCurrentSpeed() - speedFactor() * amount,0)) - currentSpeed) < 0.0) {
+        } else if (((Math.max(getCurrentSpeed() - speedFactor() * amount,0)) - currentSpeed) > 0.0) {
             throw new IllegalArgumentException("The break results in higher speed!!");
         }
         decrementSpeed(amount);

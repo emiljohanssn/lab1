@@ -40,22 +40,24 @@ public class Saab95 extends Cars{
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 
-    // TODO fix this method according to lab pm
     public void gas(double amount){
         if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");
         } else if ((getCurrentSpeed() + speedFactor() * amount) > enginePower) {
             throw new IllegalArgumentException("Gas exceeds engine power!!");
+        } else if (((getCurrentSpeed() + speedFactor() * amount) - currentSpeed) < 0.0) {
+            throw new IllegalArgumentException("The gas results in lower speed!!");
         }
         incrementSpeed(amount);
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount){
         if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");
         } else if ((getCurrentSpeed() - speedFactor() * amount) < 0.0) {
             throw new IllegalArgumentException("Brake makes negative speed!!");
+        } else if (((getCurrentSpeed() - speedFactor() * amount) - currentSpeed) > 0.0) {
+            throw new IllegalArgumentException("The break results in higher speed!!");
         }
         decrementSpeed(amount);
     }

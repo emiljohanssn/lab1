@@ -37,8 +37,8 @@ class Saab95Test {
     @Test
     public void moveInXPositionAndYPosition() {
         car.startEngine();
-        car.gas(20);
-        assertEquals(25.1, car.getCurrentSpeed());
+        car.gas(1.0);
+        assertEquals(1.35, car.getCurrentSpeed());
         car.move();
         assertEquals(0, car.getYPosition());
         car.turnRight();
@@ -48,12 +48,12 @@ class Saab95Test {
     @Test
     public void turnLeftAndMoveInYPosition() {
         car.startEngine();
-        car.gas(30);
-        assertEquals(37.6, car.getCurrentSpeed());
+        car.gas(0.3);
+        assertEquals(0.475, car.getCurrentSpeed());
         car.turnLeft();
         assertEquals(90, car.getDirection());
         car.move();
-        assertEquals(37.6, car.getYPosition());
+        assertEquals(0.475, car.getYPosition());
         assertEquals(0, car.getXPosition(), 1e-12);
     }
 
@@ -62,20 +62,41 @@ class Saab95Test {
         car.startEngine();
         car.setTurboOn();
         assertTrue(car.turboOn);
-        car.gas(20);
-        assertEquals(32.6, car.getCurrentSpeed());
-        car.brake(10);
-        assertEquals(16.35, car.getCurrentSpeed());
+        car.gas(0.75);
+        assertEquals(1.31875, car.getCurrentSpeed());
+        car.gas(1.0);
+        assertEquals(2.94375, car.getCurrentSpeed());
+        car.brake(0.1);
+        assertEquals(2.78125, car.getCurrentSpeed());
         car.setTurboOff();
-        car.brake(10);
-        assertEquals(3.85, car.getCurrentSpeed(), 1e-12);
+        car.brake(0.15);
+        assertEquals(2.59375, car.getCurrentSpeed(), 1e-12);
     }
 
     @Test
-    public void GetAndSetcolorDoorsEnginepower() {
+    public void GetAndSetColorDoorsEnginePower() {
         car.setColor(Color.YELLOW);
         assertEquals(Color.YELLOW, car.getColor());
         assertEquals(2, car.getNrDoors());
         assertEquals(125, car.getEnginePower());
+    }
+
+    @Test
+    public void assertGasAndBreakOnlyAcceptsBetweenZeroAndOne() {
+        car.startEngine();
+        assertThrows(IllegalArgumentException.class, () -> {
+            car.gas(1.5);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            car.brake(1.1);
+        });
+    }
+
+    @Test
+    public void assertCurrentSpeedIsBetweenZeroAndEnginePower() {
+        car.startEngine();
+        assertThrows(IllegalArgumentException.class, () -> {
+            car.brake(0.8);
+        });
     }
 }
