@@ -2,17 +2,11 @@ import java.awt.*;
 
 public class Saab95 extends Cars{
 
-    public boolean turboOn;
+    private boolean turboOn;
 
     public Saab95(){
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
+        super(2, 125, 0, Color.red, "Saab95", 0, 0, 0);
         turboOn = false;
-        modelName = "Saab95";
-        direction=0;
-        x=0;
-        y=0;
         stopEngine();
     }
 
@@ -26,10 +20,12 @@ public class Saab95 extends Cars{
         turboOn = false;
     }
 
-    private double speedFactor(){
+    public boolean getTurboStatus() {return turboOn;}
+
+    public double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return getEnginePower() * 0.01 * turbo;
     }
 
     private void incrementSpeed(double amount){
@@ -43,7 +39,7 @@ public class Saab95 extends Cars{
     public void gas(double amount){
         if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");
-        } else if ((getCurrentSpeed() + speedFactor() * amount) > enginePower) {
+        } else if ((getCurrentSpeed() + speedFactor() * amount) > getEnginePower()) {
             throw new IllegalArgumentException("Gas exceeds engine power!!");
         } else if (((getCurrentSpeed() + speedFactor() * amount) - currentSpeed) < 0.0) {
             throw new IllegalArgumentException("The gas results in lower speed!!");

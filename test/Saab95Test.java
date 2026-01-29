@@ -61,7 +61,7 @@ class Saab95Test {
     public void assureTurboAndBreakWorks() {
         car.startEngine();
         car.setTurboOn();
-        assertTrue(car.turboOn);
+        assertTrue(car.getTurboStatus());
         car.gas(0.75);
         assertEquals(1.31875, car.getCurrentSpeed());
         car.gas(1.0);
@@ -74,11 +74,12 @@ class Saab95Test {
     }
 
     @Test
-    public void GetAndSetColorDoorsEnginePower() {
+    public void GetAndSetColorDoorsEnginePowerModelName() {
         car.setColor(Color.YELLOW);
         assertEquals(Color.YELLOW, car.getColor());
         assertEquals(2, car.getNrDoors());
         assertEquals(125, car.getEnginePower());
+        assertEquals("Saab95", car.getModelName());
     }
 
     @Test

@@ -4,22 +4,16 @@ public class Volvo240 extends Cars{
     private final static double trimFactor = 1.25;
 
     public Volvo240(){
-        nrDoors = 4;
-        color = Color.black;
-        enginePower = 100;
-        modelName = "Volvo240";
-        direction = 0;
-        x = 0;
-        y = 0;
+        super(4, 100, 0, Color.black, "Volvo240", 0, 0, 0);
         stopEngine();
     }
 
-    private double speedFactor(){
-        return enginePower * 0.01 * trimFactor;
+    public double speedFactor(){
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
     private void incrementSpeed(double amount){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower());
     }
 
     private void decrementSpeed(double amount){
@@ -29,9 +23,9 @@ public class Volvo240 extends Cars{
     public void gas(double amount){
         if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0.");
-        } else if (Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower) > enginePower) {
+        } else if (Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()) > getEnginePower()) {
             throw new IllegalArgumentException("Gas exceeds engine power!!");
-        } else if ((Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower) - currentSpeed) < 0.0) {
+        } else if ((Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()) - currentSpeed) < 0.0) {
             throw new IllegalArgumentException("The gas results in lower speed!!");
         }
         incrementSpeed(amount);
