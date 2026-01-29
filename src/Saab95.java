@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Saab95 extends Cars{
 
-    private boolean turboOn;
+    public boolean turboOn;
 
     public Saab95(){
         nrDoors = 2;
@@ -17,12 +17,12 @@ public class Saab95 extends Cars{
     }
 
     //Bara Saab
-    private void setTurboOn(){
+    public void setTurboOn(){
         turboOn = true;
     }
 
     //Bara SAAB
-    private void setTurboOff(){
+    public void setTurboOff(){
         turboOn = false;
     }
 
@@ -41,12 +41,22 @@ public class Saab95 extends Cars{
     }
 
     // TODO fix this method according to lab pm
-    private void gas(double amount){
+    public void gas(double amount){
+        if (amount < 0.0 || amount > 1.0) {
+            throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");
+        } else if ((getCurrentSpeed() + speedFactor() * amount) > enginePower) {
+            throw new IllegalArgumentException("Gas exceeds engine power!!");
+        }
         incrementSpeed(amount);
     }
 
     // TODO fix this method according to lab pm
-    private void brake(double amount){
+    public void brake(double amount){
+        if (amount < 0.0 || amount > 1.0) {
+            throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");
+        } else if ((getCurrentSpeed() - speedFactor() * amount) < 0.0) {
+            throw new IllegalArgumentException("Brake makes negative speed!!");
+        }
         decrementSpeed(amount);
     }
 }

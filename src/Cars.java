@@ -38,14 +38,24 @@ public class Cars implements Movable {
         currentSpeed = 0;
     }
 
+    public int getDirection(){
+        return direction;
+    }
+
+    public double getXPosition(){
+        return x;
+    }
+
+    public double getYPosition(){
+        return y;
+    }
+
     public void move(){
         double radians = Math.toRadians(direction);
 
         x += Math.cos(radians) * currentSpeed;
         y += Math.sin(radians) * currentSpeed;
     }
-
-    //x/currentspeed=cos(vinkeln)
 
     public void turnLeft(){
         direction = (direction + 90)%360;
