@@ -1,17 +1,17 @@
 import java.awt.*;
 
-abstract class Cars implements Movable {
+abstract class Cars1 implements Movable1 {
 
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
+    private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
     private int direction; //direction of car in degrees
     private double x;
     private double y;
 
-    public Cars(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int direction, double x, double y) {
+    public Cars1(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int direction, double x, double y) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.currentSpeed = currentSpeed;
@@ -34,6 +34,10 @@ abstract class Cars implements Movable {
 
     public double getCurrentSpeed(){
         return currentSpeed;
+    }
+
+    public void setCurrentSpeed(double currentSpeed){
+        this.currentSpeed = currentSpeed;
     }
 
     public Color getColor(){
@@ -66,6 +70,7 @@ abstract class Cars implements Movable {
 
     abstract double speedFactor();
 
+    @Override
     public void move(){
         double radians = Math.toRadians(direction);
 
@@ -73,10 +78,12 @@ abstract class Cars implements Movable {
         y += Math.sin(radians) * currentSpeed;
     }
 
+    @Override
     public void turnLeft(){
         direction = (direction + 90)%360;
     }
 
+    @Override
     public void turnRight(){
         direction = (direction + 270)%360;
     }

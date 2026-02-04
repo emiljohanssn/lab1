@@ -1,9 +1,10 @@
 import java.awt.*;
-public class Volvo240 extends Cars{
+
+public class Volvo2401 extends Cars1 {
 
     private final static double trimFactor = 1.25;
 
-    public Volvo240(){
+    public Volvo2401(){
         super(4, 100, 0, Color.black, "Volvo240", 0, 0, 0);
         stopEngine();
     }
@@ -13,11 +14,11 @@ public class Volvo240 extends Cars{
     }
 
     private void incrementSpeed(double amount){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower());
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));
     }
 
     private void decrementSpeed(double amount){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 
     public void gas(double amount){
@@ -25,7 +26,7 @@ public class Volvo240 extends Cars{
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0.");
         } else if (Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()) > getEnginePower()) {
             throw new IllegalArgumentException("Gas exceeds engine power!!");
-        } else if ((Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()) - currentSpeed) < 0.0) {
+        } else if ((Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()) - getCurrentSpeed()) < 0.0) {
             throw new IllegalArgumentException("The gas results in lower speed!!");
         }
         incrementSpeed(amount);
@@ -36,7 +37,7 @@ public class Volvo240 extends Cars{
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0.");
         } else if (Math.max(getCurrentSpeed() - speedFactor() * amount,0) < 0.0) {
             throw new IllegalArgumentException("Brake makes negative speed!!");
-        } else if (((Math.max(getCurrentSpeed() - speedFactor() * amount,0)) - currentSpeed) > 0.0) {
+        } else if (((Math.max(getCurrentSpeed() - speedFactor() * amount,0)) - getCurrentSpeed()) > 0.0) {
             throw new IllegalArgumentException("The break results in higher speed!!");
         }
         decrementSpeed(amount);

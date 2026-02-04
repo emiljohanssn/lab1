@@ -6,12 +6,12 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Saab95Test {
-    Saab95 car;
+class Saab951Test {
+    Saab951 car;
 
     @BeforeEach
     void setUp() {
-        car = new Saab95();
+        car = new Saab951();
     }
 
     @AfterEach

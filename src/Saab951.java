@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public class Saab95 extends Cars{
+public class Saab951 extends Cars1 {
 
     private boolean turboOn;
 
-    public Saab95(){
+    public Saab951(){
         super(2, 125, 0, Color.red, "Saab95", 0, 0, 0);
         turboOn = false;
         stopEngine();
@@ -29,11 +29,11 @@ public class Saab95 extends Cars{
     }
 
     private void incrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
 
     private void decrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
 
     public void gas(double amount){
@@ -41,7 +41,7 @@ public class Saab95 extends Cars{
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");
         } else if ((getCurrentSpeed() + speedFactor() * amount) > getEnginePower()) {
             throw new IllegalArgumentException("Gas exceeds engine power!!");
-        } else if (((getCurrentSpeed() + speedFactor() * amount) - currentSpeed) < 0.0) {
+        } else if (((getCurrentSpeed() + speedFactor() * amount) - getCurrentSpeed()) < 0.0) {
             throw new IllegalArgumentException("The gas results in lower speed!!");
         }
         incrementSpeed(amount);
@@ -52,7 +52,7 @@ public class Saab95 extends Cars{
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");
         } else if ((getCurrentSpeed() - speedFactor() * amount) < 0.0) {
             throw new IllegalArgumentException("Brake makes negative speed!!");
-        } else if (((getCurrentSpeed() - speedFactor() * amount) - currentSpeed) > 0.0) {
+        } else if (((getCurrentSpeed() - speedFactor() * amount) - getCurrentSpeed()) > 0.0) {
             throw new IllegalArgumentException("The break results in higher speed!!");
         }
         decrementSpeed(amount);
