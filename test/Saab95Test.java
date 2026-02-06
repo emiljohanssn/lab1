@@ -6,12 +6,12 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Saab951Test {
-    Saab951 car;
+class Saab95Test {
+    Saab95 car;
 
     @BeforeEach
     void setUp() {
-        car = new Saab951();
+        car = new Saab95();
     }
 
     @AfterEach
@@ -74,7 +74,7 @@ class Saab951Test {
     }
 
     @Test
-    public void GetAndSetColorDoorsEnginePowerModelName() {
+    public void getAndSetColorDoorsEnginePowerModelName() {
         car.setColor(Color.YELLOW);
         assertEquals(Color.YELLOW, car.getColor());
         assertEquals(2, car.getNrDoors());

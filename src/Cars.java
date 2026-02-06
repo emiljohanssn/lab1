@@ -1,6 +1,6 @@
 import java.awt.*;
 
-abstract class Cars1 implements Movable1 {
+abstract class Cars implements Movable {
 
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
@@ -10,8 +10,9 @@ abstract class Cars1 implements Movable1 {
     private int direction; //direction of car in degrees
     private double x;
     private double y;
+    private double length; //Length of car in meters
 
-    public Cars1(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int direction, double x, double y) {
+    public Cars(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int direction, double x, double y, double length) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.currentSpeed = currentSpeed;
@@ -20,6 +21,7 @@ abstract class Cars1 implements Movable1 {
         this.direction = direction;
         this.x = x;
         this.y = y;
+        this.length=length;
     }
 
     public String getModelName() {return modelName;}
@@ -64,11 +66,23 @@ abstract class Cars1 implements Movable1 {
         return x;
     }
 
+    public void setXPosition(double x){
+        this.x = x;
+    }
+
     public double getYPosition(){
         return y;
     }
 
+    public void setYPosition(double y){
+        this.y = y;
+    }
+
     abstract double speedFactor();
+
+    public double getLength(){
+        return length;
+    }
 
     @Override
     public void move(){

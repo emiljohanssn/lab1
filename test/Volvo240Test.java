@@ -3,11 +3,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class Volvo2401Test {
-    Volvo2401 car;
+public class Volvo240Test {
+    Volvo240 car;
     @BeforeEach
     void setUp() {
-        car = new Volvo2401();
+        car = new Volvo240();
     }
 
     @AfterEach
