@@ -16,6 +16,7 @@ class ScaniaTest {
     void tearDown() {
     }
 
+
     @Test
     public void raiseAndLowerFlatbed() {
         assertEquals(0,truck.getFlatbed() );

@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Stack;
 
-public class Transport extends vehiclesWithFlatbed implements hasFlatbed, Storage{
+public class Transport extends vehiclesWithFlatbed implements hasFlatbed, Storage<Cars>{
     private int capacity;
     private Stack<Cars> carsLoaded = new Stack<>();
 
@@ -27,6 +27,7 @@ public class Transport extends vehiclesWithFlatbed implements hasFlatbed, Storag
         setFlatbed(1);
     }
 
+    @Override
     public void load(Cars car) {
         if (getFlatbed() != 1) {
             throw new IllegalArgumentException("Flatbed is up!!");
@@ -43,7 +44,8 @@ public class Transport extends vehiclesWithFlatbed implements hasFlatbed, Storag
         carsLoaded.add(car);
     }
 
-    public void unload() {
+    @Override
+    public Cars unload() {
         if (carsLoaded.isEmpty()) {
             throw new IllegalArgumentException("The transport is empty!!");
         }

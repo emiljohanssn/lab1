@@ -1,6 +1,6 @@
 import java.awt.*;
 
-abstract class Cars implements Movable {
+public abstract class Cars implements Movable {
 
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
@@ -84,6 +84,10 @@ abstract class Cars implements Movable {
         return length;
     }
 
+
+    /**
+     * moves the object in a direction
+     */
     @Override
     public void move(){
         double radians = Math.toRadians(direction);
