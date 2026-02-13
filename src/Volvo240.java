@@ -21,6 +21,7 @@ public class Volvo240 extends Cars {
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 
+    @Override
     public void gas(double amount){
         if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0.");

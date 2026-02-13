@@ -30,7 +30,7 @@ abstract class vehiclesWithFlatbed extends Cars {
 
     public void gas(double amount){
         if (flatbed != 0) {
-            throw new IllegalArgumentException("You can't drive while your flatbed is not straight");
+            throw new IllegalArgumentException("You can't drive while your flatbed is not up");
         } else if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");
         } else if ((getCurrentSpeed() + speedFactor() * amount) > getEnginePower()) {

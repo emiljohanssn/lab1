@@ -36,6 +36,7 @@ public class Saab95 extends Cars {
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
 
+    @Override
     public void gas(double amount){
         if (amount < 0.0 || amount > 1.0) {
             throw new IllegalArgumentException("Amount must be between 0.0 and 1.0!!");

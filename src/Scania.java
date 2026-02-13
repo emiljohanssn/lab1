@@ -7,7 +7,7 @@ public class Scania extends vehiclesWithFlatbed implements hasFlatbed {
         stopEngine();
     }
 
-    public void raiseFlatbed(int amount) {
+    public void lowerFlatbed(int amount) {
         if (getFlatbed() + amount > 70) {
             throw new IllegalArgumentException("Angle can't be bigger than 70!!");
         } else if (getCurrentSpeed() != 0) {
@@ -16,7 +16,7 @@ public class Scania extends vehiclesWithFlatbed implements hasFlatbed {
         setFlatbed(getFlatbed() + amount);
     }
 
-    public void lowerFlatbed(int amount) {
+    public void raiseFlatbed(int amount) {
         if (getFlatbed() - amount < 0) {
             throw new IllegalArgumentException("Angle can't be smaller than 0!!");
         }

@@ -84,6 +84,10 @@ public abstract class Cars implements Movable {
         return length;
     }
 
+    abstract void gas(double amount);
+
+    abstract void brake(double amount);
+
 
     /**
      * moves the object in a direction
