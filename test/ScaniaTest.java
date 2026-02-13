@@ -24,6 +24,11 @@ class ScaniaTest {
         assertEquals(20, truck.getFlatbed());
         truck.lowerFlatbed(10);
         assertEquals(10, truck.getFlatbed());
+        Movable truck2 = new Scania();
+
+        truck2.move();
+
+
     }
 
     @Test

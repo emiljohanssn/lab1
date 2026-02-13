@@ -51,6 +51,7 @@ public class Transport extends vehiclesWithFlatbed implements hasFlatbed, Storag
         }
         Cars unloadedCar = (Cars) carsLoaded.pop();
         unloadedCar.setXPosition(unloadedCar.getXPosition() + 1);
+        return unloadedCar;
     }
 
     public int getTransportCount() {

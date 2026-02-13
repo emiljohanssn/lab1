@@ -27,4 +27,8 @@ public class Garage<C extends Cars> implements Storage<C> {
     public int getCurrentCapacity() {
         return carGarage.size();
     }
+
+    public ArrayList<C> getCarGarage() {
+        return carGarage;
+    }
 }

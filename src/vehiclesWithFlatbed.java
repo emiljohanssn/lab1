@@ -1,9 +1,9 @@
 import java.awt.*;
 
-abstract class vehiclesWithFlatbed extends Cars {
+abstract class vehiclesWithFlatbed extends Cars implements hasFlatbed{
     private int flatbed;
 
-    public vehiclesWithFlatbed(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int direction, double x, double y, double length) {
+    public vehiclesWithFlatbed (int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, int direction, double x, double y, double length) {
         super(nrDoors, enginePower, currentSpeed, color, modelName, direction, x, y, length);
         flatbed = 0;
     }
@@ -59,4 +59,9 @@ abstract class vehiclesWithFlatbed extends Cars {
     public void setFlatbed(int flatbed){
         this.flatbed = flatbed;
     }
+
+    public abstract void raiseFlatbed(int amount);
+
+    public abstract void lowerFlatbed(int amount);
+
 }
