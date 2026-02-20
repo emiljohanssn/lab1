@@ -62,8 +62,7 @@ public abstract class Cars implements Movable {
         return direction;
     }
 
-    public double
-    getXPosition(){
+    public double getXPosition(){
         return x;
     }
 
