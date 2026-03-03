@@ -12,7 +12,7 @@ class GarageTest {
 
     @BeforeEach
     void setUp() {
-        garage = new Garage(2);
+        garage = new Garage(2, 0,0 );
         saab95_1 = new Saab95();
         saab95_2 = new Saab95();
         saab95_3 = new Saab95();

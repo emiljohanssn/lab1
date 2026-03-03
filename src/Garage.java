@@ -4,7 +4,7 @@ public class Garage<C extends Cars> implements Storage<C> {
     private ArrayList<C> carGarage = new ArrayList<>();
     private int maxCapacity;
 
-    public Garage(int maxCapacity) {
+    public Garage(int maxCapacity, int x, int y) {
         this.maxCapacity = maxCapacity;
     }
 
